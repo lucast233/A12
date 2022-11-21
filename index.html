@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script>
+            function displayCookies() {
+            var fname=getCookie("firstName");
+            if (fname==null) {fname="";}
+            if (fname!="") {fname="firstName="+fname;}
+            var lname=getCookie("lastName");
+            if (lname==null) {lname="";}
+            if (lname!="") {lname="lastName="+lname;}
+            alert (fname + " " + lname);
+        }
+            function getCookie(name) {
+            var nameEQ = name + "=";
+            var ca = document.cookie.split(';');
+            for(var i=0;i < ca.length;i++) {
+            var c = ca[i];
+            while (c.charAt(0)==' ') c = c.substring(1);
+            if (c.indexOf(nameEQ) != -1) return c.substring(nameEQ.length,c.length);
+        }
+            return null;
+        }
+    </script>
+</head>
+<body>
+<h1>
+    This is an example of cookies being used. <br>
+    You can add or remove the cookies with these buttons and then display with the bottom button
+</h1>
+<p>
+    <button type="button" onclick='document.cookie="firstName=Professor;expires=Wed, 18 Dec 2026 12:00:00 GMT"'>Create First Cookie</button>&nbsp;
+    <button type="button" onclick='document.cookie="lastName=Spryszynski;expires=Wed, 18 Dec 2026 12:00:00 GMT"'>Create Last Cookie</button>
+    <button type="button" onclick='document.cookie="firstName=;expires=Thu, 01 Jan 1970"'>Delete First Cookie</button>&nbsp;
+    <button type="button" onclick='document.cookie="lastName=;expires=Thu, 01 Jan 1970"'>Delete Last Cookie</button>
+<div>
+    <button type="button" onclick='displayCookies()'>Display Your Cookies</button>&nbsp;
+</div>
+</p>
+</body>
+</html>
